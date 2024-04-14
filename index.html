@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./scripts/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <title>Pokedex</title>
+</head>
+
+<body onload="loadPokemon(), loadPokemonSpecies()">
+    <div id="pokedex">
+        <h1 id="pokemonName">Name</h1>
+        <h2 id="pokedexNumber"></h2>
+        <div class="typeContainer" id="pokemonType">
+
+        </div>
+
+    </div>
+    <div class="info-container"><img id="pokemonImage">
+
+    </div>
+    <div class="pokemonInfo">
+        <ul class="nav nav-underline navigation">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Base Stats</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Evolution</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-disabled="true">Moves</a>
+            </li>
+        </ul>
+
+        <table>
+            <tr>
+                <td>Species</td>
+                <td id="species">cell2_1</td>
+            </tr>
+            <tr>
+                <td>Height</td>
+                <td id="height">cell2_2</td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td id="weight">cell2_3</td>
+            </tr>
+            <tr>
+                <td>Abilities</td>
+                <td id="abilities">cell2_4</td>
+            </tr>
+        </table>
+
+        <h5 class="breeding">Breeding</h5>
+        <table>
+            <tr>
+                <td>Habitat</td>
+                <td id="habitat">cell2_1</td>
+            </tr>
+            <tr>
+                <td>Egg Groups</td>
+                <td id="eggGroups">cell2_2</td>
+            </tr>
+            <tr>
+                <td>Egg Cycle</td>
+                <td id="eggCycle">cell2_3</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
