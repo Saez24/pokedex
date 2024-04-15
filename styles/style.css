@@ -72,7 +72,7 @@ table {
     margin: auto;
     display: flex;
     align-items: stretch;
-    width: 84%;
+    width: 75%;
 }
 
 tbody {
@@ -87,10 +87,17 @@ tr {
     justify-content: space-between;
 }
 
-.breeding {
-    width: 84%;
-    justify-content: space-around;
-    margin: auto;
+.progress {
+    width: 70%;
+}
+
+.evolutionContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
-    margin-bottom: 20px !important;
+}
+
+.baseStatsContent {
+    display: none;
 }

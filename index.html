@@ -18,7 +18,7 @@
     <title>Pokedex</title>
 </head>
 
-<body onload="loadPokemon(), loadPokemonSpecies()">
+<body onload="loadPokemon()">
     <div id="pokedex">
         <h1 id="pokemonName">Name</h1>
         <h2 id="pokedexNumber"></h2>
@@ -30,56 +30,91 @@
     <div class="info-container"><img id="pokemonImage">
 
     </div>
-    <div class="pokemonInfo">
+    <div id="pokemonInfo" class="pokemonInfo">
         <ul class="nav nav-underline navigation">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">About</a>
+                <a id="about" onclick="renderAbout()" class="nav-link active" aria-current="page" href="#">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Base Stats</a>
+                <a id="baseStats" onclick="renderBaseStats()" class="nav-link" href="#">Base Stats</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Evolution</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" aria-disabled="true">Moves</a>
+                <a id="evolution" onclick="renderEvolutionContent()" class="nav-link" href="#">Evolution</a>
             </li>
         </ul>
+    </div>
+    <div class="aboutcontainer" id="aboutcontainer">
+        <section id="aboutsection">
+            <table>
+                <tr>
+                    <td>Species</td>
+                    <td id="species"></td>
+                </tr>
+                <tr>
+                    <td>Height</td>
+                    <td id="height"></td>
+                </tr>
+                <tr>
+                    <td>Weight</td>
+                    <td id="weight"></td>
+                </tr>
+                <tr>
+                    <td>Abilities</td>
+                    <td id="abilities"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>Habitat</td>
+                    <td id="habitat"></td>
+                </tr>
+                <tr>
+                    <td>Egg Groups</td>
+                    <td id="eggGroups"></td>
+                </tr>
+            </table>baseStatsContent
 
+        </section>
+    </div>
+
+    <section class="" id="baseStatsContent">
         <table>
             <tr>
-                <td>Species</td>
-                <td id="species">cell2_1</td>
+                <td>HP</td>
+                <td id="hp" class="progress" role="progressbar" aria-label="HP" aria-valuenow="" aria-valuemin="0"
+                    aria-valuemax="100">
+                    <div class="progress-bar" id="hpProgress">
+                    </div>
+                </td>
             </tr>
             <tr>
-                <td>Height</td>
-                <td id="height">cell2_2</td>
+                <td>Attack</td>
+                <td id="attack" class="progress" role="progressbar" aria-label="Attack" aria-valuenow=""
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" id="attackProgress"></div>
+                </td>
             </tr>
             <tr>
-                <td>Weight</td>
-                <td id="weight">cell2_3</td>
+                <td>Defense</td>
+                <td id="defense" class="progress" role="progressbar" aria-label="Defense" aria-valuenow=""
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" id="defenseProgress"></div>
+                </td>
             </tr>
             <tr>
-                <td>Abilities</td>
-                <td id="abilities">cell2_4</td>
+                <td>Speed</td>
+                <td id="speed" class="progress" role="progressbar" aria-label="Spezial-Attack" aria-valuenow=""
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" id="speedProgress"></div>
+                </td>
             </tr>
         </table>
-
-        <h5 class="breeding">Breeding</h5>
-        <table>
-            <tr>
-                <td>Habitat</td>
-                <td id="habitat">cell2_1</td>
-            </tr>
-            <tr>
-                <td>Egg Groups</td>
-                <td id="eggGroups">cell2_2</td>
-            </tr>
-            <tr>
-                <td>Egg Cycle</td>
-                <td id="eggCycle">cell2_3</td>
-            </tr>
-        </table>
+    </section>
+    <section class="evolutionContent" id="evolutionContent">
+        <h2 id="evolutionName"></h2>
+        <h3 id="pokedexEvoNumber"></h3>
+        <div id="evolution"><img id="pokemonEvoImage"></div>
+    </section>
     </div>
 </body>
 
