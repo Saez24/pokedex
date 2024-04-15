@@ -6,12 +6,12 @@ let currentPokemonEvolution;
 let nextPokemon
 
 async function loadPokemon() {
-    let url = 'https://pokeapi.co/api/v2/pokemon/4/';
+    let url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
     let response = await fetch(url);
     currentPokemon = await response.json();
     console.log('Loaded pokemon', currentPokemon);
     renderPokemonInfo();
-    loadPokemonSpecies()
+    loadPokemonSpecies();
 };
 
 async function loadPokemonSpecies() {
@@ -19,9 +19,9 @@ async function loadPokemonSpecies() {
     let responseSpecies = await fetch(url);
     currentPokemonSpecies = await responseSpecies.json();
     console.log('Loaded pokemon Species', currentPokemonSpecies);
-    renderPokemonSpeciesInfo()
-    renderPokemonEggGroups()
-    loadPokemonEvolution()
+    renderPokemonSpeciesInfo();
+    renderPokemonEggGroups();
+    loadPokemonEvolution();
 };
 
 async function loadPokemonEvolution() {
@@ -33,9 +33,9 @@ async function loadPokemonEvolution() {
 
 function renderPokemonInfo() {
     document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
-    document.getElementById('pokedexNumber').innerHTML = '#' + currentPokemon['id'].toString().padStart(4, '0');
+    document.getElementById('pokedexNumber').innerHTML = '#' + currentPokemon['id'].toString().padStart(0, '0');
     document.getElementById('pokemonImage').src = currentPokemon['sprites']['other']['home']['front_default'];
-    renderAboutSection()
+    renderAboutSection();
 };
 
 function renderAboutSection() {
@@ -223,7 +223,7 @@ async function generateEvolutionHTML() {
 
 function renderNextEvoPokemon() {
     document.getElementById('evolutionName').innerHTML = nextPokemon['name'];
-    document.getElementById('pokedexEvoNumber').innerHTML = '#' + nextPokemon['id'].toString().padStart(4, '0');
+    document.getElementById('pokedexEvoNumber').innerHTML = '#' + nextPokemon['id'].toString().padStart(0, '0');
     document.getElementById('pokemonEvoImage').src = nextPokemon['sprites']['other']['home']['front_default'];
 };
 

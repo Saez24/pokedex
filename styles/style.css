@@ -12,21 +12,21 @@ a {
 }
 
 #pokedex {
-    min-height: 50vh;
+    min-height: 26vh;
     color: white;
     display: flex;
     padding: 24px;
     flex-direction: column;
 }
 
-.info-container {
+/* .info-container {
     background-color: white;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     height: 100px;
     margin-top: -40px;
     min-height: 100px;
-}
+} */
 
 .info-container img {
     position: absolute;
@@ -100,4 +100,9 @@ tr {
 
 .baseStatsContent {
     display: none;
+    height: 27vh;
+}
+
+.aboutcontainer {
+    height: 37vh;
 }
