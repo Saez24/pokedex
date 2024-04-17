@@ -7,6 +7,11 @@ body {
     text-transform: capitalize;
 }
 
+.modal-open {
+    overflow-y: hidden;
+    position: fixed;
+}
+
 a {
     color: black !important;
 }

@@ -1,4 +1,4 @@
-let pokemonAmount = 30;
+let pokemonAmount = 20;
 let allPokemon = [];
 let pokemonNames = [];
 let matchingPokemonNames = [];
@@ -23,16 +23,21 @@ let speciesColors = {
     psychic: 'linear-gradient(90deg, rgba(37,37,37,1) 0%, rgba(180,233,252,1) 68%)',
     rock: 'linear-gradient(90deg, rgba(37,37,37,1) 0%, rgba(191,189,189,1) 68%)',
     flying: 'linear-gradient(90deg, rgba(37,37,37,1) 0%, rgba(55,173,219,1) 68%)',
+    ice: 'linear-gradient(90deg, rgba(37,37,37,1) 0%, rgba(55,173,219,1) 68%)',
+    dragon: 'linear-gradient(90deg, rgba(37,37,37,1) 0%, rgba(175,0,0,1) 68%)',
 };
 
 function openDialog() {
     document.getElementById('dialog').classList.remove('d_none');
     dialogOpened = true;
+
+    document.getElementById('body').classList.add("modal-open");
 }
 
 function closeDialog() {
     document.getElementById('dialog').classList.add('d_none');
     dialogOpened = false;
+    document.getElementById('body').classList.remove("modal-open");
 }
 
 async function init() {
@@ -52,6 +57,8 @@ async function loadPokemons(id) {
     let cardHTML = createPokemonCard(currentPokemons);
     originalPokemonCards.push(cardHTML);
     renderPokemonInfoContent(currentPokemons);
+    loadPokemon(id);
+
 };
 
 function renderPokemonInfoContent(currentPokemons) {
@@ -134,7 +141,7 @@ async function loadMorePokemons() {
 };
 
 async function previousPokemon() {
-    let currentWrapperId = `pokedexWrapper(${currentPokemon.id})`;
+    let currentWrapperId = `pokedexWrapper(${currentPokemons.id})`;
     let currentWrapper = document.getElementById(currentWrapperId);
 
     let previousWrapper = currentWrapper.previousElementSibling;
@@ -143,16 +150,30 @@ async function previousPokemon() {
         let previousPokemonIndex = parseInt(previousId) - 1;
 
         if (previousPokemonIndex >= 0 && previousPokemonIndex < allPokemon.length) {
-            currentPokemon = allPokemon[previousPokemonIndex];
-            console.log('Loaded previous pokemon', currentPokemon);
+            currentPokemons = allPokemon[previousPokemonIndex];
+            console.log('Loaded previous pokemon', currentPokemons);
             renderPokemonInfo();
-            loadPokemonSpecies(currentPokemon.name);
+            loadPokemonSpecies(currentPokemons.name);
         }
     }
 };
 
+async function previousPokemonAndUpdate() {
+    await previousPokemon();
+    if (document.getElementById('baseStats').classList.contains("active")) {
+        generateBaseStatsHTML();
+    } else if (document.getElementById('evolution').classList.contains("active")) {
+        clearPreviousEvolution1()
+        clearPreviousEvolution2();
+        clearPreviousEvolution3();
+        generateEvolution1HTML();
+        generateEvolution2HTML();
+        generateEvolution3HTML();
+    }
+}
+
 async function nextPokemon() {
-    let currentWrapperId = `pokedexWrapper(${currentPokemon.id})`;
+    let currentWrapperId = `pokedexWrapper(${currentPokemons.id})`;
     let currentWrapper = document.getElementById(currentWrapperId);
 
     let nextWrapper = currentWrapper.nextElementSibling;
@@ -161,16 +182,27 @@ async function nextPokemon() {
         let nextPokemonIndex = parseInt(nextId) - 1;
 
         if (nextPokemonIndex >= 0 && nextPokemonIndex < allPokemon.length) {
-            currentPokemon = allPokemon[nextPokemonIndex];
-            console.log('Loaded next pokemon', currentPokemon);
+            currentPokemons = allPokemon[nextPokemonIndex];
+            console.log('Loaded next pokemon', currentPokemons);
             renderPokemonInfo();
-            loadPokemonSpecies(currentPokemon.name);
+            loadPokemonSpecies(currentPokemons.name);
         } else {
             console.log('No next pokemon available');
         }
-    } else {
-        console.log('No next pokemon available');
-        await loadMorePokemons();
+    }
+};
+
+async function nextPokemonAndUpdate() {
+    await nextPokemon();
+    if (document.getElementById('baseStats').classList.contains("active")) {
+        generateBaseStatsHTML();
+    } else if (document.getElementById('evolution').classList.contains("active")) {
+        clearPreviousEvolution1()
+        clearPreviousEvolution2();
+        clearPreviousEvolution3();
+        generateEvolution1HTML();
+        generateEvolution2HTML();
+        generateEvolution3HTML();
     }
 };
 
@@ -189,7 +221,7 @@ function search(ele) {
 function keyCode(event) {
     var x = event.keyCode;
     if (x == 27) {
-        document.getElementById('search').value = '';
+        clearSearchbar();
     }
 };
 
