@@ -177,31 +177,6 @@ function updateSpeedProgress(speedBaseStat) {
     speedProgressBar.setAttribute('aria-valuenow', speedBaseStat);
 };
 
-function generateBaseStatsHTML() {
-    let hpBaseStat = currentPokemon['stats'][0]['base_stat'];
-    let attackBaseStat = currentPokemon['stats'][1]['base_stat'];
-    let defenseBaseStat = currentPokemon['stats'][2]['base_stat'];
-    let speedBaseStat = currentPokemon['stats'][5]['base_stat'];
-    document.getElementById('hpProgress').innerHTML = currentPokemon['stats'][0]['base_stat'];
-    document.getElementById('attackProgress').innerHTML = attackBaseStat;
-    document.getElementById('defenseProgress').innerHTML = defenseBaseStat;
-    document.getElementById('speedProgress').innerHTML = speedBaseStat;
-    updateHPProgress(hpBaseStat);
-    updateAttackProgress(attackBaseStat);
-    updateDefenseProgress(defenseBaseStat);
-    updateSpeedProgress(speedBaseStat);
-};
-
-function renderBaseStats() {
-    document.getElementById('baseStatsContent').style.display = 'block';
-    document.getElementById('evolutionContent').style.display = 'none';
-    document.getElementById('aboutcontainer').style.display = 'none';
-    document.getElementById('baseStats').classList.add("active");
-    document.getElementById('about').classList.remove("active");
-    document.getElementById('evolution').classList.remove("active");
-    generateBaseStatsHTML();
-};
-
 async function generateAboutHTML() {
     let species = currentPokemonSpecies['genera'][7]['genus'];
     let height = (currentPokemon['height'] / 10).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' m';
@@ -217,26 +192,19 @@ async function generateAboutHTML() {
     document.getElementById('eggGroups').innerHTML = eggGroups;
 };
 
-function renderAbout() {
-    document.getElementById('evolutionContent').style.display = 'none';
-    document.getElementById('baseStatsContent').style.display = 'none';
-    document.getElementById('aboutcontainer').style.display = 'block';
-    document.getElementById('baseStats').classList.remove("active");
-    document.getElementById('evolution').classList.remove("active");
-    document.getElementById('about').classList.add("active");
-};
-
-function renderEvolutionContent() {
-    document.getElementById('evolutionContent').style.display = 'flex';
-    document.getElementById('aboutcontainer').style.display = 'none';
-    document.getElementById('baseStatsContent').style.display = 'none';
-    document.getElementById('baseStats').classList.remove("active");
-    document.getElementById('about').classList.remove("active");
-    document.getElementById('evolution').classList.add("active");
-
-    generateEvolution1HTML();
-    generateEvolution2HTML();
-    generateEvolution3HTML();
+function generateBaseStatsHTML() {
+    let hpBaseStat = currentPokemon['stats'][0]['base_stat'];
+    let attackBaseStat = currentPokemon['stats'][1]['base_stat'];
+    let defenseBaseStat = currentPokemon['stats'][2]['base_stat'];
+    let speedBaseStat = currentPokemon['stats'][5]['base_stat'];
+    document.getElementById('hpProgress').innerHTML = currentPokemon['stats'][0]['base_stat'];
+    document.getElementById('attackProgress').innerHTML = attackBaseStat;
+    document.getElementById('defenseProgress').innerHTML = defenseBaseStat;
+    document.getElementById('speedProgress').innerHTML = speedBaseStat;
+    updateHPProgress(hpBaseStat);
+    updateAttackProgress(attackBaseStat);
+    updateDefenseProgress(defenseBaseStat);
+    updateSpeedProgress(speedBaseStat);
 };
 
 async function generateEvolution1HTML() {
@@ -281,6 +249,38 @@ async function generateEvolution3HTML() {
     } else {
         clearPreviousEvolution3();
     }
+};
+
+function renderAbout() {
+    document.getElementById('evolutionContent').style.display = 'none';
+    document.getElementById('baseStatsContent').style.display = 'none';
+    document.getElementById('aboutcontainer').style.display = 'block';
+    document.getElementById('baseStats').classList.remove("active");
+    document.getElementById('evolution').classList.remove("active");
+    document.getElementById('about').classList.add("active");
+};
+
+function renderBaseStats() {
+    document.getElementById('baseStatsContent').style.display = 'block';
+    document.getElementById('evolutionContent').style.display = 'none';
+    document.getElementById('aboutcontainer').style.display = 'none';
+    document.getElementById('baseStats').classList.add("active");
+    document.getElementById('about').classList.remove("active");
+    document.getElementById('evolution').classList.remove("active");
+    generateBaseStatsHTML();
+};
+
+function renderEvolutionContent() {
+    document.getElementById('evolutionContent').style.display = 'flex';
+    document.getElementById('aboutcontainer').style.display = 'none';
+    document.getElementById('baseStatsContent').style.display = 'none';
+    document.getElementById('baseStats').classList.remove("active");
+    document.getElementById('about').classList.remove("active");
+    document.getElementById('evolution').classList.add("active");
+
+    generateEvolution1HTML();
+    generateEvolution2HTML();
+    generateEvolution3HTML();
 };
 
 function clearPreviousEvolution3() {

@@ -12,6 +12,9 @@ header {
     color: white;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+    text-align: center;
 }
 
 .content {
@@ -38,7 +41,7 @@ img {
     border-radius: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    margin-top: 10px;
+    margin: 10px;
 }
 
 .pokedex-wrapper:hover {
@@ -93,4 +96,15 @@ img {
 
 .d_none {
     display: none;
+}
+
+.morePokemon {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.morePokemon button {
+    width: 90%;
 }

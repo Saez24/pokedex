@@ -23,6 +23,15 @@
 <body onload="init()">
     <header>
         <h1>My Pokedex</h1>
+        <div class="input-group mb-3">
+            <input id="search" oninput="filterPokemon()" onkeydown="keyCode(event)" onchange="filterPokemon()"
+                type="text" class="form-control" placeholder="Search your Pokemon" aria-label="Search your"
+                aria-describedby="button-addon2">
+            <button onclick="filterPokemon()" onkeydown="search(this)" class="btn btn-outline-secondary" type="button"
+                id="searchButton">Search</button>
+            <button onclick="clearSearchbar()" class="btn btn-outline-secondary" type="button"
+                id="clearSerchBar">X</button>
+        </div>
     </header>
 
     <section id="pokemonList" class="content">
@@ -158,8 +167,10 @@
         </div>
 
     </div>
-
-
+    <div class="morePokemon">
+        <button onclick="loadMorePokemons()" type="button" class="btn btn-primary btn-lg btn-block">Load more
+            Pokemon</button>
+    </div>
 </body>
 
 </html>
