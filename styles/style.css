@@ -11,29 +11,32 @@ a {
     color: black !important;
 }
 
-#pokedex {
-    min-height: 26vh;
+#pokedexDialog {
+    min-height: 30vh;
     color: white;
     display: flex;
     padding: 24px;
     flex-direction: column;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
 }
 
-/* .info-container {
+.info-containerDialog {
     background-color: white;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    height: 100px;
+    height: 64px;
     margin-top: -40px;
-    min-height: 100px;
-} */
+    min-height: 64px;
+}
 
-.info-container img {
+.info-containerDialog img {
     position: absolute;
-    top: 27%;
+    top: 23%;
     left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
+    width: 45%;
 
 }
 
@@ -56,7 +59,9 @@ a {
     width: 90%;
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
 }
 
 .navigation {
@@ -95,7 +100,6 @@ tr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
 }
 
 .baseStatsContent {
@@ -105,4 +109,71 @@ tr {
 
 .aboutcontainer {
     height: 37vh;
+}
+
+.evolution {
+    display: flex;
+    width: 90%;
+    text-align: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.evolution img {
+    width: 90%;
+}
+
+.next {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    right: 10px;
+    top: 50%;
+    cursor: pointer;
+}
+
+.prev {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    left: 10px;
+    top: 50%;
+    cursor: pointer;
+}
+
+.next img {
+    position: fixed;
+    right: 20px;
+    cursor: pointer;
+    filter: invert(1);
+    border: 0px;
+    width: 30px;
+
+}
+
+svg .next img:hover {
+    opacity: 80%;
+}
+
+.prev img {
+    position: fixed;
+    left: 20px;
+    cursor: pointer;
+    filter: invert(1);
+    border: 0px;
+    width: 30px;
+}
+
+.prev img:hover {
+    opacity: 80%;
+}
+
+@media (max-width:550px) {
+    .evolution h4 {
+        font-size: 16px;
+    }
+
+    .evolution h5 {
+        font-size: 14px;
+    }
 }

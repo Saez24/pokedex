@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/content.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="./scripts/content.js"></script>
+    <script src="./scripts/dialog.js"></script>
+    <script src="./scripts/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
@@ -29,16 +30,29 @@
     </section>
     <div id="dialog" class="dialog-bg d_none">
         <div class="dialog">
-
-            <div id="pokedex">
-                <h1 id="pokemonName"></h1>
+            <button class="btn btn-outline-primary rounded-circle p-3 lh-1" id="close"
+                onclick="closeDialog()">X</button>
+            <div>
+                <svg onclick="nextPokemon()" class="next" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1" />
+                </svg>
+                <svg onclick="previousPokemon()" class="prev" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1" />
+                </svg>
+            </div>
+            <div id="pokedexDialog">
+                <h1 id="pokemonNameDialog"></h1>
                 <h2 id="pokedexNumber"></h2>
                 <div class="typeContainer" id="pokemonType">
 
                 </div>
 
             </div>
-            <div class="info-container"><img id="pokemonImage">
+            <div class="info-containerDialog"><img id="pokemonImageDialog">
 
             </div>
             <div id="pokemonInfo" class="pokemonInfo">
@@ -123,14 +137,28 @@
                 </table>
             </section>
             <section class="evolutionContent" id="evolutionContent">
-                <h2 id="evolutionName"></h2>
-                <h3 id="pokedexEvoNumber"></h3>
-                <div id="evolution"><img id="pokemonEvoImage"></div>
+                <div id="evolution" class="evolution">
+                    <div>
+                        <h4 id="evolutionName1"></h4>
+                        <h5 id="pokedexEvoNumber1"></h5>
+                        <img id="pokemonEvoImage1">
+                    </div>
+                    <div>
+                        <h4 id="evolutionName2"></h4>
+                        <h5 id="pokedexEvoNumber2"></h5>
+                        <img id="pokemonEvoImage2">
+                    </div>
+                    <div>
+                        <h4 id="evolutionName3"></h4>
+                        <h5 id="pokedexEvoNumber3"></h5>
+                        <img id="pokemonEvoImage3">
+                    </div>
+                </div>
             </section>
         </div>
 
     </div>
-    </div>
+
 
 </body>
 
