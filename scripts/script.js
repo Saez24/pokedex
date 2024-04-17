@@ -40,6 +40,10 @@ function closeDialog() {
     document.getElementById('body').classList.remove("modal-open");
 }
 
+function closeDialogOnBackground(event) {
+    event.stopPropagation();
+}
+
 async function init() {
     for (let i = 0; i < pokemonAmount; i++) {
         await loadPokemons(id);

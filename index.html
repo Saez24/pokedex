@@ -38,8 +38,8 @@
     <section id="pokemonList" class="content">
 
     </section>
-    <div id="dialog" class="dialog-bg d_none">
-        <div class="dialog">
+    <div onclick="closeDialog()" id="dialog" class="dialog-bg d_none">
+        <div onclick="closeDialogOnBackground(event)" class="dialog">
             <button class="btn btn-outline-primary rounded-circle p-3 lh-1" id="close"
                 onclick="closeDialog()">X</button>
             <div>
