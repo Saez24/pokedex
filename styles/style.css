@@ -201,3 +201,14 @@ svg .next img:hover {
         font-size: 12px;
     }
 }
+
+@media (max-height:750px) {
+    .info-containerDialog img {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        width: 38%;
+    }
+}
