@@ -158,6 +158,9 @@ async function previousPokemon() {
             console.log('Loaded previous pokemon', currentPokemons);
             renderPokemonInfo();
             loadPokemonSpecies(currentPokemons.name);
+        } else {
+            document.getElementById('prev').style.display = 'none';
+            console.log('No next pokemon available');
         }
     }
 };
@@ -216,6 +219,7 @@ async function filterPokemon() {
     findMatchingPokemon(search);
     showMatchingPokemon();
 };
+
 function search(ele) {
     if (event.key === 'Enter') {
         alert(ele.value);

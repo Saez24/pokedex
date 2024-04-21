@@ -71,7 +71,7 @@ img {
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
-    height: 769px;
+    height: 95%;
     line-height: 20px;
     max-width: 600px;
     min-height: 196px;
