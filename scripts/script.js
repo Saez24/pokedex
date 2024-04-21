@@ -30,7 +30,6 @@ let speciesColors = {
 function openDialog() {
     document.getElementById('dialog').classList.remove('d_none');
     dialogOpened = true;
-
     document.getElementById('body').classList.add("modal-open");
 }
 
@@ -38,6 +37,7 @@ function closeDialog() {
     document.getElementById('dialog').classList.add('d_none');
     dialogOpened = false;
     document.getElementById('body').classList.remove("modal-open");
+    updatePreviousButtonVisibility();
 }
 
 function closeDialogOnBackground(event) {
@@ -132,6 +132,8 @@ function getBackgroundColor(species1, species2) {
 };
 
 async function loadMorePokemons() {
+    let nextButton = document.getElementById('next');
+    nextButton.style.display = 'block';
     pokemonAmount += 20;
     let startingIndex = allPokemon.length + 1;
 
@@ -167,6 +169,8 @@ async function previousPokemon() {
 
 async function previousPokemonAndUpdate() {
     await previousPokemon();
+    updatePreviousButtonVisibility();
+    updateNextButtonVisibility();
     if (document.getElementById('baseStats').classList.contains("active")) {
         generateBaseStatsHTML();
     } else if (document.getElementById('evolution').classList.contains("active")) {
@@ -201,6 +205,8 @@ async function nextPokemon() {
 
 async function nextPokemonAndUpdate() {
     await nextPokemon();
+    updateNextButtonVisibility();
+    updatePreviousButtonVisibility();
     if (document.getElementById('baseStats').classList.contains("active")) {
         generateBaseStatsHTML();
     } else if (document.getElementById('evolution').classList.contains("active")) {
@@ -212,6 +218,26 @@ async function nextPokemonAndUpdate() {
         generateEvolution3HTML();
     }
 };
+
+function updatePreviousButtonVisibility() {
+    let previousButton = document.getElementById('prev');
+    if (currentPokemons.id === 1 || !allPokemon[currentPokemons.id - 2]) {
+
+        previousButton.style.display = 'none';
+    } else {
+        previousButton.style.display = 'block';
+    }
+}
+
+function updateNextButtonVisibility() {
+    let nextButton = document.getElementById('next');
+    if (currentPokemons.id === allPokemon.length || !allPokemon[currentPokemons.id]) {
+        nextButton.style.display = 'none';
+    } else {
+        nextButton.style.display = 'block';
+    }
+}
+
 
 async function filterPokemon() {
     let search = document.getElementById('search').value.trim().toLowerCase();

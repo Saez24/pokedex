@@ -8,27 +8,17 @@ async function loadPokemon(id, pokemonName) {
     let url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
     let response = await fetch(url);
     currentPokemons = await response.json();
-    console.log('Loaded pokemons', currentPokemons);
+    updatePreviousButtonVisibility();
     renderPokemonInfo();
     loadPokemonSpecies(pokemonName);
-    loadPokemonEvolution(pokemonName);
-};
-
-async function loadPokemonSpecies() {
-    let url = currentPokemons['types']['0']['type']['name'];
-    let responseSpecies = await fetch(url);
-    currentPokemonSpecies = await responseSpecies.json();
-    console.log('Loaded pokemon Species', currentPokemonSpecies);
-    renderPokemonSpeciesInfo();
-    renderPokemonEggGroups();
-    loadPokemonEvolution();
+    updateNextButtonVisibility();
+    updatePreviousButtonVisibility();
 };
 
 async function loadPokemonSpecies() {
     let url = currentPokemons['species']['url'];
     let responseSpecies = await fetch(url);
     currentPokemonSpecies = await responseSpecies.json();
-    console.log('Loaded pokemon Species', currentPokemonSpecies);
     renderPokemonSpeciesInfo();
     renderPokemonEggGroups();
     loadPokemonEvolution();
@@ -38,26 +28,19 @@ async function loadPokemonEvolution() {
     let url = currentPokemonSpecies['evolution_chain']['url'];
     let responseEvolution = await fetch(url);
     currentPokemonEvolution = await responseEvolution.json();
-    console.log('Loaded pokemon Evolution', currentPokemonEvolution);
 
-    // Überprüfe, ob Evolutionen für das aktuelle Pokémon verfügbar sind
     if (currentPokemonEvolution && currentPokemonEvolution.chain && currentPokemonEvolution.chain.evolves_to && currentPokemonEvolution.chain.evolves_to.length > 0) {
-        // Wenn Evolutionen vorhanden sind, zeige das Evolutionselement an
         document.getElementById('evolution').style.display = 'block';
         generateEvolution1HTML();
-        // Überprüfe, ob weitere Evolutionen vorhanden sind, bevor sie generiert werden
         if (currentPokemonEvolution.chain.evolves_to[0].evolves_to.length > 0) {
             generateEvolution2HTML();
             generateEvolution3HTML();
         }
     } else {
-        // Wenn keine Evolutionen vorhanden sind, blende das Evolutionselement aus
         document.getElementById('evolution').style.display = 'none';
-        console.error('No evolution data available');
         clearPreviousEvolution1()
         clearPreviousEvolution2();
         clearPreviousEvolution3();
-        // Handle case when evolution data is not available
     }
 }
 
@@ -214,7 +197,6 @@ async function generateEvolution1HTML() {
     let response = await fetch(url);
     if (response.ok) {
         let nextPokemon = await response.json();
-        console.log('Loaded pokemon new', nextPokemon);
         renderNextEvo1Pokemon(nextPokemon);
     } else {
         clearPreviousEvolution1();
@@ -228,7 +210,6 @@ async function generateEvolution2HTML() {
     let response = await fetch(url);
     if (response.ok) {
         let nextPokemon = await response.json();
-        console.log('Loaded pokemon new', nextPokemon);
         renderNextEvo2Pokemon(nextPokemon);
     } else {
         clearPreviousEvolution2();
@@ -247,7 +228,6 @@ async function generateEvolution3HTML() {
         let response = await fetch(url);
         if (response.ok) {
             let nextPokemon = await response.json();
-            console.log('Loaded pokemon new', nextPokemon);
             renderNextEvo3Pokemon(nextPokemon);
         }
     } else {
